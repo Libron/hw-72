@@ -1,0 +1,19 @@
+.DishesPage {
+    position: relative;
+    background: grey;
+    border: 1px solid black;
+}
+
+.DishesPage .header {
+    position: relative;
+}
+
+.DishesPage .header h1 {
+    margin: 0;
+}
+
+.DishesPage .header button {
+    position: absolute;
+    top: 20%;
+    right: 15px;
+}

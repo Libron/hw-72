@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navigation from "./components/Navigation/Navigation";
+import {Container} from "reactstrap";
+import {Route, Switch} from "react-router";
+import DishesPage from "./containers/DishesPage/DishesPage";
+import OrdersPage from "./containers/OrdersPage/OrdersPage";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <Navigation />
+          <Container>
+              <Switch>
+                  <Route path="/" exact component={DishesPage}/>
+                  <Route path="/orders" exact component={OrdersPage}/>
+                  <Route render={() => <h1>Not Found</h1>}/>
+              </Switch>
+          </Container>
       </div>
     );
   }
