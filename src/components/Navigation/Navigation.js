@@ -5,7 +5,7 @@ import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} fro
 
 const Navigation = () => {
     return (
-        <Navbar color="dark" dark expand="md" style={{"marginBottom": "10px"}}>
+        <Navbar color="dark" dark expand="md" style={{"marginBottom": "30px"}}>
             <NavbarBrand href="/">Turtle Pizza Admin</NavbarBrand>
             <NavbarToggler />
             <Collapse isOpen navbar>
