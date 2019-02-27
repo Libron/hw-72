@@ -1,7 +1,9 @@
 import {FETCH_DISHES_FAILURE, FETCH_DISHES_REQUEST, FETCH_DISHES_SUCCESS} from "../actions/actionTypes";
 
 const initialState = {
-    test: 0
+    dishes: null,
+    loading: false,
+    error: null
 };
 
 const dishReducer = (state = initialState, action) => {
@@ -9,7 +11,7 @@ const dishReducer = (state = initialState, action) => {
         case FETCH_DISHES_REQUEST:
             return {...state, loading: true};
         case FETCH_DISHES_SUCCESS:
-            return {...state, loading: false, dishMenu: action.dishes};
+            return {...state, loading: false, dishes: action.dishes};
         case FETCH_DISHES_FAILURE:
             return {...state, loading: false, error: action.error};
         default:
