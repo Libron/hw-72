@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import './DishesPage.css';
 import {connect} from "react-redux";
 import {fetchDishes} from "../../store/actions/dishAction";
+import Spinner from "../../components/Spinner/Spinner";
 
 class DishesPage extends Component {
     componentDidMount(){
@@ -10,8 +11,7 @@ class DishesPage extends Component {
     }
 
     dishEditHandler = id => {
-      console.log('[Edit Dish]', id);
-      this.props.history.push('/dishes/' + id + '/edit');
+       this.props.history.push('/dishes/' + id + '/edit');
     };
 
     dishRemoveHandler = id => {
@@ -21,7 +21,7 @@ class DishesPage extends Component {
     render() {
 
         if (!this.props.dishes) {
-            return <h1>Loading...</h1>
+            return <Spinner/>
         }
 
         const dishes = Object.keys(this.props.dishes).map(dishID => {
@@ -47,7 +47,7 @@ class DishesPage extends Component {
             <div className="DishesPage">
                 <div className="header">
                     <h1>Dishes</h1>
-                    <button>Add new Dish</button>
+                    <button onClick={() => this.props.history.push('/dishes/add')}>Add new Dish</button>
                 </div>
 
                 {dishes}

@@ -1,9 +1,18 @@
-import {FETCH_DISHES_FAILURE, FETCH_DISHES_REQUEST, FETCH_DISHES_SUCCESS} from "../actions/actionTypes";
+import {
+    FETCH_DISH_FAILURE,
+    FETCH_DISH_REQUEST,
+    FETCH_DISH_SUCCESS,
+    FETCH_DISHES_FAILURE,
+    FETCH_DISHES_REQUEST,
+    FETCH_DISHES_SUCCESS, UPDATE_DISH_FAILURE, UPDATE_DISH_REQUEST, UPDATE_DISH_SUCCESS
+} from "../actions/actionTypes";
 
 const initialState = {
     dishes: null,
+    dish: null,
     loading: false,
-    error: null
+    error: null,
+
 };
 
 const dishReducer = (state = initialState, action) => {
@@ -14,6 +23,19 @@ const dishReducer = (state = initialState, action) => {
             return {...state, loading: false, dishes: action.dishes};
         case FETCH_DISHES_FAILURE:
             return {...state, loading: false, error: action.error};
+        case FETCH_DISH_REQUEST:
+            return {...state, loading: true};
+        case FETCH_DISH_SUCCESS:
+            return {...state, loading: false, dish: action.dish};
+        case FETCH_DISH_FAILURE:
+            return {...state, loading: false, error: action.error};
+        case UPDATE_DISH_REQUEST:
+            return {...state, loading: true};
+        case UPDATE_DISH_SUCCESS:
+          return {...state, loading: false};
+        case UPDATE_DISH_FAILURE:
+            return {...state, loading: false, error: action.error};
+
         default:
             return state;
     }
