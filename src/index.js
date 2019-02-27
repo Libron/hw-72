@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {BrowserRouter} from "react-router-dom";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import dishReducer from "./store/reducers/dishReducer";
 import orderReducer from "./store/reducers/orderReducer";
 import thunkMiddleware from 'redux-thunk';
+
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootReducer = combineReducers({
     dishes: dishReducer,
