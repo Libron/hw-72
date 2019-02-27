@@ -100,9 +100,3 @@ export const addDish = (dish) => {
         });
     }
 };
-
-export const goHomePage = (history) => {
-    return (dispatch) => {
-        console.log(history, dispatch);
-    }
-};

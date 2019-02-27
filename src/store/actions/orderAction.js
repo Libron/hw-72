@@ -5,8 +5,8 @@ export const fetchOrdersRequest = () => {
     return {type: FETCH_ORDERS_REQUEST};
 };
 
-export const fetchOrdersSuccess = dishes => {
-    return {type: FETCH_ORDERS_SUCCESS, dishes};
+export const fetchOrdersSuccess = orders => {
+    return {type: FETCH_ORDERS_SUCCESS, orders};
 };
 
 export const fetchOrdersFailure = error => {
@@ -14,9 +14,13 @@ export const fetchOrdersFailure = error => {
 };
 
 export const fetchOrders = () => {
-    return dispatch => {
-        API.getOrders().then(
-            response => dispatch(fetchOrdersSuccess(response.data))
-        );
+    return (dispatch) => {
+        dispatch(fetchOrdersRequest());
+        API.getOrders().then(response => {
+            dispatch(fetchOrdersSuccess(response.data));
+        }, error => {
+            dispatch(fetchOrdersFailure(error));
+        });
     }
 };
+
