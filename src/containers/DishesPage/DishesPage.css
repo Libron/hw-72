@@ -1,7 +1,7 @@
 .DishesPage {
     position: relative;
-    background: grey;
     border: 1px solid black;
+    background: grey;
 }
 
 .DishesPage .header {
@@ -9,11 +9,26 @@
 }
 
 .DishesPage .header h1 {
-    margin: 0;
+    margin: 5px 0;
+
 }
 
 .DishesPage .header button {
     position: absolute;
     top: 20%;
     right: 15px;
+}
+
+.DishesPage .Item {
+    background: #fff;
+    min-height: 120px;
+    margin-bottom: 10px;
+}
+
+.DishesPage .Item img {
+    height: 120px;
+    width: 120px;
+    float: left;
+
+
 }

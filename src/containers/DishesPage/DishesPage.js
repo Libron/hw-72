@@ -9,14 +9,40 @@ class DishesPage extends Component {
         this.props.fetchDishes();
     }
 
+    dishEditHandler = id => {
+      console.log('[Edit Dish]', id);
+      this.props.history.push('/dishes/' + id + '/edit');
+    };
+
+    dishRemoveHandler = id => {
+        console.log('[Remove Dish]', id);
+    };
+
     render() {
 
-        if (!this.props.dishMenu) {
+        if (!this.props.dishes) {
             return <h1>Loading...</h1>
         }
 
-        const menu = this.props.dishMenu;
-        console.log(Object.keys(menu));
+        const dishes = Object.keys(this.props.dishes).map(dishID => {
+
+            const dish = this.props.dishes[dishID];
+
+            return (
+                    <div key={dishID} className="Item">
+                        <img src={dish.imgURL} alt={dish.name} />
+                        <h6>{dish.name}</h6>
+                        <p>{dish.price}</p>
+
+                        <div className="Buttons">
+                            <button onClick={() => this.dishEditHandler(dishID)}>Edit</button>
+                            <button onClick={() => this.dishRemoveHandler(dishID)}>Delete</button>
+                        </div>
+                    </div>
+                );
+
+        });
+
         return (
             <div className="DishesPage">
                 <div className="header">
@@ -24,15 +50,8 @@ class DishesPage extends Component {
                     <button>Add new Dish</button>
                 </div>
 
+                {dishes}
 
-                    {Object.keys(menu).map(id=>(
-                        <div key={id} className="card">
-                            <img src={menu[id].imageURL} alt={menu[id].title} />
-                            <h6>{menu[id].title}</h6>
-                            <p>{menu[id].cost}</p>
-                        </div>
-                    ))}
-                
             </div>
         );
     }
@@ -40,7 +59,7 @@ class DishesPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        dishMenu: state.dishes.dishMenu,
+        dishes: state.dishes.dishes,
         loading: state.dishes.loading
     };
 };
