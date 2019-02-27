@@ -6,7 +6,7 @@ import {addDish} from "../../store/actions/dishAction";
 const AddDish = (props) => {
     return (
         <div>
-            <h3>Add dish: </h3>
+            <h3 className="PageTitle">Add dish form</h3>
             <DishForm
                 submit={props.addDish}
             />

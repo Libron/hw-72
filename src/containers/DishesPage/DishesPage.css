@@ -1,11 +1,13 @@
 .DishesPage {
     position: relative;
-    border: 1px solid black;
-    background: grey;
 }
 
 .DishesPage .header {
     position: relative;
+    background: #fb8c00;
+    padding: 20px 15px;
+    margin-bottom: 20px;
+    border-radius: 15px;
 }
 
 .DishesPage .header h1 {
@@ -15,20 +17,32 @@
 
 .DishesPage .header button {
     position: absolute;
-    top: 20%;
+    top: 30%;
     right: 15px;
 }
 
 .DishesPage .Item {
-    background: #fff;
     min-height: 120px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px -2px rgba(50, 50, 50, 0.75)
+}
+
+.DishesPage .Item > div {
+    text-align: left;
+    flex-basis: 50%;
+    padding: 0 5px 0 50px;
 }
 
 .DishesPage .Item img {
     height: 120px;
     width: 120px;
-    float: left;
+}
 
-
+.DishesPage .Item .price{
+    color: orangered;
+    font-weight: bold;
 }

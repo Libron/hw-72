@@ -4,6 +4,7 @@ import './DishesPage.css';
 import {connect} from "react-redux";
 import {fetchDishes} from "../../store/actions/dishAction";
 import Spinner from "../../components/Spinner/Spinner";
+import {Button, ButtonGroup} from "reactstrap";
 
 class DishesPage extends Component {
     componentDidMount(){
@@ -31,13 +32,14 @@ class DishesPage extends Component {
             return (
                     <div key={dishID} className="Item">
                         <img src={dish.imgURL} alt={dish.name} />
-                        <h6>{dish.name}</h6>
-                        <p>{dish.price}</p>
-
-                        <div className="Buttons">
-                            <button onClick={() => this.dishEditHandler(dishID)}>Edit</button>
-                            <button onClick={() => this.dishRemoveHandler(dishID)}>Delete</button>
+                        <div>
+                            <h4>{dish.name}</h4>
+                            <p className="price">{dish.price} KGS</p>
                         </div>
+                        <ButtonGroup className="Buttons">
+                            <Button color="warning" onClick={() => this.dishEditHandler(dishID)}>Edit</Button>
+                            <Button color="danger" onClick={() => this.dishRemoveHandler(dishID)}>Delete</Button>
+                        </ButtonGroup>
                     </div>
                 );
 
@@ -46,8 +48,11 @@ class DishesPage extends Component {
         return (
             <div className="DishesPage">
                 <div className="header">
-                    <h1>Dishes</h1>
-                    <button onClick={() => this.props.history.push('/dishes/add')}>Add new Dish</button>
+                    <h1>Menu</h1>
+                    <Button
+                        onClick={() => this.props.history.push('/dishes/add')}
+                        color="success">Add new Dish
+                    </Button>
                 </div>
 
                 {dishes}

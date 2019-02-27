@@ -16,7 +16,7 @@ class EditDish extends Component {
 
         return (
             <div>
-                <h3>Edit dish: </h3>
+                <h3 className="PageTitle">Edit dish form</h3>
                 <DishForm
                     id={this.props.match.params.id}
                     dish={this.props.dish}

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
+import './DishForm.css';
+
 class DishForm extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +30,7 @@ class DishForm extends Component {
 
     render() {
         return (
-            <Form onSubmit={this.submitHandler}>
+            <Form onSubmit={this.submitHandler} className='DishForm'>
                 <FormGroup>
                     <Label for="name">Name</Label>
                     <Input type="text" name="name" id="name" value={this.state.name} onChange={this.valueChanged} />
@@ -43,7 +45,7 @@ class DishForm extends Component {
                     <Label for="imgURL">Image URL</Label>
                     <Input type="text" name="imgURL" id="imgURL" value={this.state.imgURL} onChange={this.valueChanged} />
                 </FormGroup>
-                <Button>Submit</Button>
+                <Button color="info" className="btn-submit">Submit</Button>
             </Form>
         );
     }

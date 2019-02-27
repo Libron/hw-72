@@ -1,0 +1,9 @@
+.DishForm {
+    width: 60%;
+    text-align: left;
+    margin: 15px auto;
+}
+
+.DishForm .btn-submit {
+    float: right;
+}

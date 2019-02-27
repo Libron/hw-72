@@ -1,0 +1,8 @@
+.PageTitle {
+    text-align: center;
+    background: #6d4c41;
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    transform: skewX(-15deg);
+}
