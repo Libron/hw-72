@@ -8,7 +8,7 @@ import {
     FETCH_DISH_SUCCESS,
     FETCH_DISHES_FAILURE,
     FETCH_DISHES_REQUEST,
-    FETCH_DISHES_SUCCESS,
+    FETCH_DISHES_SUCCESS, REMOVE_DISH_FAILURE, REMOVE_DISH_REQUEST, REMOVE_DISH_SUCCESS,
     UPDATE_DISH_FAILURE,
     UPDATE_DISH_REQUEST,
     UPDATE_DISH_SUCCESS,
@@ -51,8 +51,18 @@ export const addDishRequest = () => {
 export const addDishSuccess = () => {
     return {type: ADD_DISH_SUCCESS}
 };
-export const addDishFailure = () => {
-    return {type: ADD_DISH_FAILURE}
+export const addDishFailure = error => {
+    return {type: ADD_DISH_FAILURE, error}
+};
+
+export const removeDishRequest = () => {
+    return {type: REMOVE_DISH_REQUEST}
+};
+export const removeDishSuccess = () => {
+    return {type: REMOVE_DISH_SUCCESS}
+};
+export const removeDishFailure = error => {
+    return {type: REMOVE_DISH_FAILURE, error}
 };
 
 
@@ -86,6 +96,17 @@ export const updateDish = (id, dish) => {
             dispatch(updateDishSuccess());
         }, error => {
             dispatch(updateDishFailure(error));
+        });
+    }
+};
+
+export const removeDish = (id) => {
+    return (dispatch) => {
+        dispatch(removeDishRequest);
+        API.deleteDish(id).then(()=>{
+            dispatch(removeDishSuccess());
+        }, error => {
+            dispatch(removeDishFailure(error));
         });
     }
 };

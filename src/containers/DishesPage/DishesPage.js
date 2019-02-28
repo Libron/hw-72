@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import './DishesPage.css';
 import {connect} from "react-redux";
-import {fetchDishes} from "../../store/actions/dishAction";
+import {fetchDishes, removeDish} from "../../store/actions/dishAction";
 import Spinner from "../../components/Spinner/Spinner";
 import {Button, ButtonGroup} from "reactstrap";
 
@@ -13,10 +13,6 @@ class DishesPage extends Component {
 
     dishEditHandler = id => {
        this.props.history.push('/dishes/' + id + '/edit');
-    };
-
-    dishRemoveHandler = id => {
-        console.log('[Remove Dish]', id);
     };
 
     render() {
@@ -38,7 +34,7 @@ class DishesPage extends Component {
                         </div>
                         <ButtonGroup className="Buttons">
                             <Button color="warning" onClick={() => this.dishEditHandler(dishID)}>Edit</Button>
-                            <Button color="danger" onClick={() => this.dishRemoveHandler(dishID)}>Delete</Button>
+                            <Button color="danger" onClick={() => this.props.removeDish(dishID)}>Delete</Button>
                         </ButtonGroup>
                     </div>
                 );
@@ -71,7 +67,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchDishes: () => dispatch(fetchDishes())
+        fetchDishes: () => dispatch(fetchDishes()),
+        removeDish: (id) => dispatch(removeDish(id))
     }
 };
 

@@ -4,7 +4,12 @@ import {
     FETCH_DISH_SUCCESS,
     FETCH_DISHES_FAILURE,
     FETCH_DISHES_REQUEST,
-    FETCH_DISHES_SUCCESS, UPDATE_DISH_FAILURE, UPDATE_DISH_REQUEST, UPDATE_DISH_SUCCESS
+    FETCH_DISHES_SUCCESS, REMOVE_DISH_FAILURE,
+    REMOVE_DISH_REQUEST,
+    REMOVE_DISH_SUCCESS,
+    UPDATE_DISH_FAILURE,
+    UPDATE_DISH_REQUEST,
+    UPDATE_DISH_SUCCESS
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -35,7 +40,12 @@ const dishReducer = (state = initialState, action) => {
           return {...state, loading: false};
         case UPDATE_DISH_FAILURE:
             return {...state, loading: false, error: action.error};
-
+        case REMOVE_DISH_REQUEST:
+            return {...state, loading: true};
+        case REMOVE_DISH_SUCCESS:
+            return {...state, loading: false};
+        case REMOVE_DISH_FAILURE:
+            return {...state, loading: false, error: action.error};
         default:
             return state;
     }
