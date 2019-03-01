@@ -20,6 +20,7 @@ class EditDish extends Component {
                 <DishForm
                     id={this.props.match.params.id}
                     dish={this.props.dish}
+                    history={this.props.history}
                     submit={this.props.updateDish}
                 />
             </div>
@@ -37,8 +38,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchDish: (id) => dispatch(fetchDish(id)),
-        updateDish: (id, data) => dispatch(updateDish(id, data))
-    }
+        updateDish: (id, data, history) => dispatch(updateDish(id, data, history))
+        }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditDish);

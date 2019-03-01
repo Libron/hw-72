@@ -16,6 +16,7 @@ class App extends Component {
           <Container>
               <Switch>
                   <Route path="/" exact component={DishesPage}/>
+                  <Route path="/dishes" exact component={DishesPage}/>
                   <Route path="/dishes/:id/edit" exact component={EditDish}/>
                   <Route path="/dishes/add" exact component={AddDish}/>
                   <Route path="/orders" exact component={OrdersPage}/>

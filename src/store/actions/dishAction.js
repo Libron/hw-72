@@ -58,8 +58,8 @@ export const addDishFailure = error => {
 export const removeDishRequest = () => {
     return {type: REMOVE_DISH_REQUEST}
 };
-export const removeDishSuccess = () => {
-    return {type: REMOVE_DISH_SUCCESS}
+export const removeDishSuccess = (id) => {
+    return {type: REMOVE_DISH_SUCCESS, id}
 };
 export const removeDishFailure = error => {
     return {type: REMOVE_DISH_FAILURE, error}
@@ -89,11 +89,13 @@ export const fetchDish = (id) => {
     }
 };
 
-export const updateDish = (id, dish) => {
+export const updateDish = (id, dish, history) => {
     return (dispatch) => {
         dispatch(updateDishRequest);
         API.updateDish(id, dish).then(() => {
             dispatch(updateDishSuccess());
+            alert('Успешно внесены изменения!');
+            history.push('/');
         }, error => {
             dispatch(updateDishFailure(error));
         });
@@ -104,18 +106,20 @@ export const removeDish = (id) => {
     return (dispatch) => {
         dispatch(removeDishRequest);
         API.deleteDish(id).then(()=>{
-            dispatch(removeDishSuccess());
+            dispatch(removeDishSuccess(id));
         }, error => {
             dispatch(removeDishFailure(error));
         });
     }
 };
 
-export const addDish = (dish) => {
+export const addDish = (dish, history) => {
     return (dispatch) => {
         dispatch(addDishRequest);
         API.addDish(dish).then(() => {
             dispatch(addDishSuccess());
+            alert('Вы успешно добавили пиццу!');
+            history.push('/');
         }, error => {
             dispatch(addDishFailure(error));
         });

@@ -43,7 +43,13 @@ const dishReducer = (state = initialState, action) => {
         case REMOVE_DISH_REQUEST:
             return {...state, loading: true};
         case REMOVE_DISH_SUCCESS:
-            return {...state, loading: false};
+            const dishes = {...state.dishes};
+            delete dishes[action.id];
+            return {
+                ...state,
+                loading: false,
+                dishes
+            };
         case REMOVE_DISH_FAILURE:
             return {...state, loading: false, error: action.error};
         default:
