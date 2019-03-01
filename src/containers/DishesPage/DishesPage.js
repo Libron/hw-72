@@ -34,11 +34,12 @@ class DishesPage extends Component {
                         </div>
                         <ButtonGroup className="Buttons">
                             <Button color="warning" onClick={() => this.dishEditHandler(dishID)}>Edit</Button>
-                            <Button color="danger" onClick={() => this.props.removeDish(dishID)}>Delete</Button>
+                            <Button color="danger" onClick={() => {
+                                if (window.confirm('Вы точно хотите удалить ?')) return this.props.removeDish(dishID)
+                            }}>Delete</Button>
                         </ButtonGroup>
                     </div>
                 );
-
         });
 
         return (
