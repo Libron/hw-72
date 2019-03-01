@@ -9,6 +9,7 @@ const AddDish = (props) => {
             <h3 className="PageTitle">Add dish form</h3>
             <DishForm
                 submit={props.addDish}
+                history={props.history}
             />
         </div>
     );
@@ -16,7 +17,7 @@ const AddDish = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addDish: (id, data) => dispatch(addDish(data)),
+        addDish: (id, data, history) => dispatch(addDish(data, history)),
     }
 };
 
