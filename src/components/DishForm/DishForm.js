@@ -25,7 +25,7 @@ class DishForm extends Component {
 
     submitHandler = event => {
         event.preventDefault();
-        this.props.submit(this.props.id, {...this.state});
+        this.props.submit(this.props.id, {...this.state}, this.props.history);
     };
 
     render() {
