@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {fetchDishes} from "../../store/actions/dishAction";
-import {fetchOrders} from "../../store/actions/orderAction";
+import {completeOrder, fetchOrders} from "../../store/actions/orderAction";
 import Spinner from "../../components/Spinner/Spinner";
 import {connect} from "react-redux";
 
@@ -51,12 +51,11 @@ class OrdersPage extends Component {
                     </div>
                     <div className="order-info">
                         <p className="item-total"><strong>Order total:</strong> {orderPrice + DELIVERY_COST} KGS</p>
-                        <Button color="success">Complete order</Button>
+                        <Button color="success" onClick={() => this.props.completeOrder(orderId)}>Complete order</Button>
                     </div>
                 </div>
             )
         });
-
 
         return (
             <div className="OrdersPage">
@@ -80,7 +79,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchOrders: () => dispatch(fetchOrders()),
-        fetchDishes: () => dispatch(fetchDishes())
+        fetchDishes: () => dispatch(fetchDishes()),
+        completeOrder: (id) => dispatch(completeOrder(id)),
     }
 };
 

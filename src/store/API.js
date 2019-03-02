@@ -6,5 +6,6 @@ export const API = {
     getDishInfo: (id) => axios.get('dishes/' + id + '.json'),
     updateDish: (id, dish) => axios.put('dishes/' + id + '.json', dish),
     addDish: (dish) => axios.post('dishes.json', dish),
-    deleteDish: (id) => axios.delete('dishes/' + id + '.json')
+    deleteDish: (id) => axios.delete('dishes/' + id + '.json'),
+    completeOrder: (id) => axios.delete('orders/' + id + '.json'),
 };
