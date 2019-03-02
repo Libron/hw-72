@@ -45,10 +45,8 @@ export const completeOrder = (id) => {
     return (dispatch) => {
         dispatch(completeOrderRequest());
         API.completeOrder(id).then(()=>{
-            alert('removed', id);
             dispatch(completeOrderSuccess(id));
         }, error => {
-            alert('error', error);
             dispatch(completeOrderFailure(error));
         });
     }
